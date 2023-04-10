@@ -1,0 +1,34 @@
+{
+  "Cars": [
+    {
+      "id": 1,
+      "model": "Model S",
+      "make": "Tesla",
+      "cost": 100000
+    },
+    {
+      "id": 2,
+      "model": "MDX 4WD",
+      "make": "Accura",
+      "cost": 60000
+    },
+    {
+      "model": "Model Y",
+      "make": "Tesla",
+      "cost": 70000,
+      "id": 3
+    },
+    {
+      "model": "M5",
+      "make": "BMW",
+      "cost": 130000,
+      "id": 4
+    },
+    {
+      "id": 5,
+      "model": "LX",
+      "make": "Honda",
+      "cost": 35000
+    }
+  ]
+}

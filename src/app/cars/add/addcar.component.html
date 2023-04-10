@@ -1,0 +1,38 @@
+
+<div class="containter">
+    <div class="row">
+        <div class="col-md-9 offset-md-3">
+            <form [formGroup]="addCarForm" (ngSubmit)="addCar()">
+                <!-- for model -->
+                <div class="form-group">
+                <label for="model">Mode:</label>
+                <input type="text" class="override-border-radius" class="form-control" name="model" formControlName="model" placeholder="Please enter model"
+                    [ngClass]="{'is-invalid': submitted && addCarForm.controls['model'].errors}" />
+                    <span *ngIf="addCarForm.controls['model'].invalid && 
+                    addCarForm.controls['model'].touched" class="text-danger">Car model is required</span>
+                </div>
+                <!-- for make -->
+                <div class="form-group" >
+                <label for="make">Make:</label>
+                <input type="text" class="form-control" name="make" formControlName="make" placeholder="Please enter make" 
+                    [ngClass]="{'is-invalid': submitted && addCarForm.controls['make'].errors}"/>
+                    <span *ngIf="addCarForm.controls['make'].invalid && 
+                    addCarForm.controls['make'].touched" class="text-danger">Car make is required</span>
+                </div>
+                <!-- for Cost -->
+                <div class="form-group">
+                <label for="cost">Cost:</label>
+                <input type="number" class="form-control" name="cost" formControlName="cost" placeholder="Please enter Cost" 
+                    [ngClass]="{'is-invalid': submitted && addCarForm.controls['cost'].errors}"/>
+                    <span *ngIf="addCarForm.controls['cost'].invalid && 
+                    addCarForm.controls['cost'].touched" class="text-danger">Cost is required</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <!-- <button type="button" class="btn btn-primary" (click)="addCar">Add</button> -->
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
+            </form>    
+        </div>
+    </div>
+</div>
