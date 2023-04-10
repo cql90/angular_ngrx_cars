@@ -4,3 +4,29 @@ label{
     color: red;
     margin-right: 10px;
 }
+
+@mixin flexDiv{
+    text-align: center;
+    font-size: 2rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    font-family: auto;
+}
+
+.div_header{
+    @include flexDiv();
+    background-color: lightseagreen;
+    height: 50px;
+}
+
+.div_add{
+    @include flexDiv();
+    background-color: lightslategray !important;
+    height: 60px !important;
+}
+
+.btn-primary{
+    border: 1px solid lightslategray;
+    font-size: 1.3rem;
+}
+

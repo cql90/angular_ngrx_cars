@@ -1,0 +1,13 @@
+$fontSize: 1.5em;
+
+.form-control{
+    border-radius: .7rem;
+    border: 1px solid black;
+    width: 250px;
+    font-size: 1rem;
+    // position: left;
+}
+
+label {
+    font-size: $fontSize;
+}

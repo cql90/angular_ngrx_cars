@@ -34,19 +34,31 @@ export class AddCarComponent {
   // this version is after added app.select.ts, app.select.ts and app.reducer.ts
   addCar(){
     this.submitted = true;
-    this.store.dispatch(AddNewCarAPI({newCar: {...this.addCarForm.value}}));
-    // pip return Observable<AppState> from selectAppState
-    let appStatus$ = this.appStore.pipe(select(selectAppState));
-    // Must subscribe for Observable to trigger the process
-    appStatus$.subscribe((data) => {
-      if(data.apiStatus === 'Success'){
-        // Need to clear the state setup in car.effects.ts after success
-        this.appStore.dispatch(setAppAPIStatus({
-          apiStatus: {apiStatus: '', apiResponseMessage: ''}
-        }))
-        // navigate back to Home URL after successfully add new Car
-        this.router.navigate(['/']);
-      }
-    })
+    // make sure user need to fill out all form fields
+    if(this.addCarForm.valid){
+      this.store.dispatch(AddNewCarAPI({newCar: {...this.addCarForm.value}}));
+      // pip return Observable<AppState> from selectAppState
+      let appStatus$ = this.appStore.pipe(select(selectAppState));
+      // Must subscribe for Observable to trigger the process
+      appStatus$.subscribe((data) => {
+        if(data.apiStatus === 'Success'){
+          // Need to clear the state setup in car.effects.ts after success
+          this.appStore.dispatch(setAppAPIStatus({
+            apiStatus: {apiStatus: '', apiResponseMessage: ''}
+          }))
+          // navigate back to Home URL after successfully add new Car
+          this.router.navigate(['/']);
+        }
+      })
+    }
+    else{
+      this.validateForm()
+    }
+  }
+
+  // when submit button click, turn on the control on the form to touched state
+  validateForm() { 
+    for(let i in this.addCarForm.controls)
+        this.addCarForm.controls[i].markAsTouched();
   }
 }

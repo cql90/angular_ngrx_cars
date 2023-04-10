@@ -1,4 +1,9 @@
 <div class="container mt-2">
+  <div class="div_header">
+    <div class="">
+      Angular - Ngrx
+    </div>
+  </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col" *ngFor="let car of cars$ | async">
         <div class="card">
@@ -40,8 +45,9 @@
       </div>
     </div>
     <br>
-    <div class="col col-md4 offset-md-4">
-      <a class="btn btn-primary" routerLink="/add">Add New Car</a>
+    <div class="div_add">
+        <a class="btn btn-primary" routerLink="/add">Add New Car</a>
     </div>
 </div>  
+
 

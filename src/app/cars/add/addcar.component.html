@@ -5,7 +5,7 @@
             <form [formGroup]="addCarForm" (ngSubmit)="addCar()">
                 <!-- for model -->
                 <div class="form-group">
-                <label for="model">Mode:</label>
+                <label for="model">Model:</label>
                 <input type="text" class="override-border-radius" class="form-control" name="model" formControlName="model" placeholder="Please enter model"
                     [ngClass]="{'is-invalid': submitted && addCarForm.controls['model'].errors}" />
                     <span *ngIf="addCarForm.controls['model'].invalid && 
