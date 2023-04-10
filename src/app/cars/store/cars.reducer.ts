@@ -4,20 +4,7 @@ import { Car } from './car';
 import { AddNewCarAPISuccess, DeleteCarAPISuccess, FetchAllCarsAPISuccess, UpdateCarAPISuccess } from './cars.action';
 
 // need to have dummy data for the view to work probably. So, two dummy objects was added
-export const initialState: ReadonlyArray<Car> = [
-    {
-        'id': 1,
-        'model': "Model S",
-        'make': 'Tesla',
-        'cost': 100000
-    },
-    {
-        'id': 2,
-        'model': "RX 350",
-        'make': 'Lexus',
-        'cost': 60000
-    }
-];
+export const initialState: ReadonlyArray<Car> = [];
 
 export const carReducer = createReducer(
     initialState,
