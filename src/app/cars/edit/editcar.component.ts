@@ -29,6 +29,7 @@ export class EditCarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // call selectCarById from cars.selector
     let fetchFromId$ = this.activeRoute.paramMap.pipe(
       switchMap((param) => {
         let id = Number(param.get('id'))

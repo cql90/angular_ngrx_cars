@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { Car } from './car';
 
-export const selectCar = createFeatureSelector<Car[]>('myCars');
+export const selectCar = createFeatureSelector<Car[]>('Cars');
 
 export const selectCarById = (carId: number) => {
     return createSelector(selectCar, (cars: Car[]) => {

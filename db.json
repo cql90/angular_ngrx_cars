@@ -2,9 +2,9 @@
   "Cars": [
     {
       "id": 1,
-      "model": "Model S",
-      "make": "Tesla",
-      "cost": 100000
+      "model": "Model SYX",
+      "make": "Tesla Electric Car",
+      "cost": 180000
     },
     {
       "id": 2,
@@ -29,6 +29,12 @@
       "model": "LX",
       "make": "Honda",
       "cost": 35000
+    },
+    {
+      "model": "Tundra",
+      "make": "Toyota",
+      "cost": 30000,
+      "id": 6
     }
   ]
 }

@@ -22,7 +22,7 @@ import { appReducer } from './shared/store/app.reducer';
     CarsModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([CarsEffects]),
-    StoreModule.forFeature('myCars', carReducer),
+    StoreModule.forFeature('Cars', carReducer),
     HttpClientModule
   ],
   providers: [],
