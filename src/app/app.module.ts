@@ -11,7 +11,6 @@ import { carReducer } from './cars/store/cars.reducer';
 import { CarsEffects } from './cars/store/cars.effects';
 import { appReducer } from './shared/store/app.reducer';
 
-
 @NgModule({
   declarations: [
     AppComponent

@@ -10,7 +10,7 @@ import { setAppAPIStatus } from 'src/app/shared/store/app.action';
 @Component({
   selector: 'app-add-car',
   templateUrl: './addcar.component.html',
-  styleUrls: ['./addcar.component.scss']
+  styleUrls: ['./addcar.component.scss', '../../app.component.scss']
 })
 export class AddCarComponent {
   addCarForm!: FormGroup;
@@ -60,5 +60,9 @@ export class AddCarComponent {
   validateForm() { 
     for(let i in this.addCarForm.controls)
         this.addCarForm.controls[i].markAsTouched();
+  }
+
+  cancelChange(){
+    this.router.navigate(['/'])
   }
 }

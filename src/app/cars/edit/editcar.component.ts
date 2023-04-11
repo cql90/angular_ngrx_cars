@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Form, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { UpdateCarAPI } from '../store/cars.action';
 import { AppState } from 'src/app/shared/store/appstate';
@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs';
 @Component({
   selector: 'app-edit-car',
   templateUrl: './editcar.component.html',
-  styleUrls: ['./editcar.component.scss']
+  styleUrls: ['./editcar.component.scss', '../../app.component.scss']
 })
 export class EditCarComponent implements OnInit {
   editCarForm!: FormGroup;
@@ -51,19 +51,35 @@ export class EditCarComponent implements OnInit {
 
   // this version is after added app.select.ts, app.select.ts and app.reducer.ts
   updateCar(){
-    this.store.dispatch(UpdateCarAPI({update: {...this.editCarForm.value}}));
-    // pip return Observable<AppState> from selectAppState
-    let appStatus$ = this.appStore.pipe(select(selectAppState));
-    // Must subscribe for Observable to trigger the process
-    appStatus$.subscribe((data) => {
-      if(data.apiStatus === 'Success'){
-        // Need to clear the state setup in car.effects.ts after success
-        this.appStore.dispatch(setAppAPIStatus({
-          apiStatus: {apiStatus: '', apiResponseMessage: ''}
-        }))
-        // navigate back to Home URL after successfully add new Car
-        this.router.navigate(['/']);
-      }
-    })
+    this.submitted = true;
+    if(this.editCarForm.valid){
+      this.store.dispatch(UpdateCarAPI({update: {...this.editCarForm.value}}));
+      // pip return Observable<AppState> from selectAppState
+      let appStatus$ = this.appStore.pipe(select(selectAppState));
+      // Must subscribe for Observable to trigger the process
+      appStatus$.subscribe((data) => {
+        if(data.apiStatus === 'Success'){
+          // Need to clear the state setup in car.effects.ts after success
+          this.appStore.dispatch(setAppAPIStatus({
+            apiStatus: {apiStatus: '', apiResponseMessage: ''}
+          }))
+          // navigate back to Home URL after successfully add new Car
+          this.router.navigate(['/']);
+        }
+      })
+    }
+    else{
+      this.validateForm()
+    }
+  }
+
+  // when submit button click, turn on the control on the form to touched state
+  validateForm() { 
+    for(let i in this.editCarForm.controls)
+        this.editCarForm.controls[i].markAsTouched();
+  }
+
+  cancelChange(){
+    this.router.navigate(['/']);
   }
 }
