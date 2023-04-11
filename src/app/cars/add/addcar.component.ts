@@ -18,7 +18,6 @@ export class AddCarComponent {
   constructor(private formBuilder: FormBuilder, private store: Store, 
     private appStore: Store<AppState>, private router: Router){
     this.addCarForm = this.formBuilder.group({
-      id: ['', Validators.required],
       model: ['', Validators.required], 
       make: ['', Validators.required],
       cost: ['', Validators.required]
